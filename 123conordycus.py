@@ -2,7 +2,7 @@
 import turtle as trtl
 import random as rand
 
-apple_image = "apple.gif" # Store the file name of your shape
+apple_image = "apple.gif" # Store the file name of your shape 
 ground_height = -200
 apple_letter_x_offset = -25
 apple_letter_y_offset = -50
@@ -13,17 +13,16 @@ screen_height = 400
 letter_list = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
 "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-current_letter = "A"
-
-
+current_letters = []
+apple_list = []
+number_of_apples = 5
 
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 wn.addshape(apple_image) # Make the screen aware of the new file
 
 wn.bgpic("tree.gif")
-apple = trtl.Turtle()
-apple.penup()
+
 wn.tracer(False)
 
 # given a turtle, set that turtle to be shaped by the image file
@@ -35,6 +34,7 @@ def reset_apple(active_apple):
     current_letter = letter_list.pop(index)
     active_apple.goto(rand.randint(-(screen_width)/2, screen_width/2), rand.randint(-(screen_height)/2, (screen_height)/2))
     draw_apple(active_apple, current_letter)
+    current_letters.append(current_letter)
 
 
 
@@ -45,13 +45,19 @@ def draw_apple(active_apple, letter):
   draw_letter(active_apple, letter)
   wn.update()
 
-def drop_apple():
+def drop_apple(letter):
   wn.tracer(True)
-  apple.goto(apple.xcor(), ground_height)
-  apple.clear()
-  apple.hideturtle()
+  index = current_letters.index(letter)
+  current_letters.pop(index)
+
+  active_apple = apple_list.pop(index)
+
+  active_apple.goto(active_apple.xcor(), ground_height)
+  active_apple.clear()
+  active_apple.hideturtle()
   wn.tracer(False)
-  reset_apple(apple)
+  reset_apple(active_apple)
+  apple_list.append(active_apple)
 
 def draw_letter(active_apple, letter):
   active_apple.color("white")
@@ -60,88 +66,96 @@ def draw_letter(active_apple, letter):
   active_apple.write(letter, font=("Arial", 74, "bold"))
   active_apple.setpos(remember_position)
 
+for i in range(number_of_apples):
+  active_apple = trtl.Turtle(shape = apple_image)
+  active_apple.penup()
+  reset_apple(active_apple)
+  apple_list.append(active_apple)
+
+
+
 
 def check_letter_A():
-  if (current_letter == "A"):
-    drop_apple()
+  if ("A" in current_letters):
+    drop_apple("A")
 def check_letter_B():
-  if (current_letter == "B"):
-    drop_apple()
+  if ("B" in current_letters):
+    drop_apple("B")
 def check_letter_C():
-  if (current_letter == "C"):
-    drop_apple()
+  if ("C" in current_letters):
+    drop_apple("C")
 def check_letter_D():
-  if (current_letter == "D"):
-    drop_apple()
+  if ("D" in current_letters):
+    drop_apple("D")
 def check_letter_E():
-  if (current_letter == "E"):
-    drop_apple()
+  if ("E" in current_letters):
+    drop_apple("E")
 def check_letter_F():
-  if (current_letter == "F"):
-    drop_apple()
+  if ("F" in current_letters):
+    drop_apple("F")
 def check_letter_G():
-  if (current_letter == "G"):
-    drop_apple()
+  if ("G" in current_letters):
+    drop_apple("G")
 def check_letter_H():
-  if (current_letter == "H"):
-    drop_apple()
+  if ("H" in current_letters):
+    drop_apple("H")
 def check_letter_I():
-  if (current_letter == "I"):
-    drop_apple()
+  if ("I" in current_letters):
+    drop_apple("I")
 def check_letter_J():
-  if (current_letter == "J"):
-    drop_apple()
+  if ("J" in current_letters):
+    drop_apple("J")
 def check_letter_K():
-  if (current_letter == "K"):
-    drop_apple()
+  if ("K" in current_letters):
+    drop_apple("K")
 def check_letter_L():
-  if (current_letter == "L"):
-    drop_apple()
+  if ("L" in current_letters):
+    drop_apple("L")
 def check_letter_M():
-  if (current_letter == "M"):
-    drop_apple()
+  if ("M" in current_letters):
+    drop_apple("M")
 def check_letter_N():
-  if (current_letter == "N"):
-    drop_apple()
+  if ("N" in current_letters):
+    drop_apple("N")
 def check_letter_O():
-  if (current_letter == "O"):
-    drop_apple()
+  if ("O" in current_letters):
+    drop_apple("O")
 def check_letter_P():
-  if (current_letter == "P"):
-    drop_apple()
+  if ("P" in current_letters):
+    drop_apple("P")
 def check_letter_Q():
-  if (current_letter == "Q"):
-    drop_apple()
+  if ("Q" in current_letters):
+    drop_apple("Q")
 def check_letter_R():
-  if (current_letter == "R"):
-    drop_apple()
+  if ("R" in current_letters):
+    drop_apple("R")
 def check_letter_S():
-  if (current_letter == "S"):
-    drop_apple()
+  if ("S" in current_letters):
+    drop_apple("S")
 def check_letter_T():
-  if (current_letter == "T"):
-    drop_apple()
+  if ("T" in current_letters):
+    drop_apple("T")
 def check_letter_U():
-  if (current_letter == "U"):
-    drop_apple()
+  if ("U" in current_letters):
+    drop_apple("U")
 def check_letter_V():
-  if (current_letter == "V"):
-    drop_apple()
+  if ("V" in current_letters):
+    drop_apple("V")
 def check_letter_W():
-  if (current_letter == "W"):
-    drop_apple()
+  if ("W" in current_letters):
+    drop_apple("W")
 def check_letter_X():
-  if (current_letter == "X"):
-    drop_apple()
+  if ("X" in current_letters):
+    drop_apple("X")
 def check_letter_Y():
-  if (current_letter == "Y"):
-    drop_apple()
+  if ("Y" in current_letters):
+    drop_apple("Y")
 def check_letter_Z():
-  if (current_letter == "Z"):
-    drop_apple()
+  if ("Z" in current_letters):
+    drop_apple("Z")
 
 
-draw_apple(apple, "A")
+# draw_apple(active_apple, "A")
 wn.onkeypress(check_letter_A, "A")
 wn.onkeypress(check_letter_B, "B")
 wn.onkeypress(check_letter_C, "C")
